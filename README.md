@@ -4,8 +4,7 @@ Language: Haskell
 
 ## Running exercises
 
-    cd day01
-    ghc ../utils.hs main.hs && (cat input.txt | ./main)
+    ./aoc day01
 
 ## Author
 
