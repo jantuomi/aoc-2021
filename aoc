@@ -1,6 +1,8 @@
 #!/bin/bash
 
 DAY="${1}"
+INPUT="${2:-input.txt}"
+
 if [ -z "${DAY}" ]; then
     echo "usage: ${0} day01"
     exit 1
@@ -9,9 +11,9 @@ fi
 set -euo pipefail
 
 cd "${DAY}"
-if [ ! -f "input.txt" ]; then
-    echo "input.txt not found in ${DAY}"
+if [ ! -f "${INPUT}" ]; then
+    echo "${INPUT} not found in ${DAY}"
     exit 1
 fi
 
-ghc ../utils.hs main.hs && (cat input.txt | ./main)
+ghc ../utils.hs main.hs && (cat "${INPUT}" | ./main)
