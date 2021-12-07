@@ -14,9 +14,6 @@ convert (x : xs) = x + 2 * convert xs
 toIntMatrix :: [[Char]] -> [[Int]]
 toIntMatrix = map (map digitToInt)
 
-transpose :: [[a]] -> [[a]]
-transpose = getZipList . traverse ZipList
-
 mostCommon :: [Int] -> Int
 -- Appending [0, 1] is a hack to make maximumBy choose 1 in a tie due to semantics
 mostCommon lst = maximumBy (comparing (\x -> length $ filter (x ==) lst)) (lst ++ [0, 1])
