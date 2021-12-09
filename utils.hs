@@ -18,8 +18,11 @@ splitOn p s = case dropWhile p s of
 transpose :: [[a]] -> [[a]]
 transpose = getZipList . traverse ZipList
 
-mapWithIndex :: (Num a1, Enum a1) => (a2 -> b) -> [a2] -> [(a1, b)]
+mapWithIndex :: (a -> b) -> [a] -> [(Int, b)]
 mapWithIndex f xs = zip [0 ..] (map f xs)
 
 removeAt :: [Int] -> [b] -> [b]
 removeAt is xs = mapWithIndex id xs $> filter (\(i', _) -> i' `notElem` is) .> map snd
+
+slice :: Int -> Int -> [a] -> [a]
+slice from to xs = take (to - from + 1) (drop from xs)
