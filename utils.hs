@@ -26,3 +26,8 @@ removeAt is xs = mapWithIndex id xs $> filter (\(i', _) -> i' `notElem` is) .> m
 
 slice :: Int -> Int -> [a] -> [a]
 slice from to xs = take (to - from + 1) (drop from xs)
+
+splitEvery _ [] = []
+splitEvery n list = first : splitEvery n rest
+  where
+    (first, rest) = splitAt n list
