@@ -31,3 +31,9 @@ splitEvery _ [] = []
 splitEvery n list = first : splitEvery n rest
   where
     (first, rest) = splitAt n list
+
+splitToPair :: (Show a) => (a -> Bool) -> [a] -> ([a], [a])
+splitToPair f lst =
+  let x' = takeWhile (not . f) lst
+      y' = dropWhile (not . f) lst $> drop 1
+   in (x', y')
