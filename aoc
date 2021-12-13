@@ -16,4 +16,4 @@ if [ ! -f "${INPUT}" ]; then
     exit 1
 fi
 
-ghc ../utils.hs main.hs && (cat "${INPUT}" | ./main)
+ghc -O2 ../utils.hs main.hs && (cat "${INPUT}" | ./main)
