@@ -37,3 +37,6 @@ splitToPair f lst =
   let x' = takeWhile (not . f) lst
       y' = dropWhile (not . f) lst $> drop 1
    in (x', y')
+
+count :: (a -> Bool) -> [a] -> Int
+count pred xs = xs $> filter pred .> length
