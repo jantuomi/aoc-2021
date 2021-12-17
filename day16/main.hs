@@ -39,10 +39,6 @@ binaryToInt = reverse .> binaryToInt'
 binaryToInt' [] = 0
 binaryToInt' (x : xs) = digitToInt x + 2 * binaryToInt' xs
 
-takeUntil :: (a -> Bool) -> [a] -> [a]
-takeUntil _ [] = []
-takeUntil p (x : xs) = x : if p x then takeUntil p xs else []
-
 applyOperator opTypeId subValues = case opTypeId of
   0 -> sum subValues
   1 -> product subValues

@@ -40,3 +40,7 @@ splitToPair f lst =
 
 count :: (a -> Bool) -> [a] -> Int
 count pred xs = xs $> filter pred .> length
+
+takeUntil :: (a -> Bool) -> [a] -> [a]
+takeUntil _ [] = []
+takeUntil p (x : xs) = x : if p x then takeUntil p xs else []
