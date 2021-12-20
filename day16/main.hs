@@ -32,13 +32,6 @@ convertHex other = error $ "invalid hex: " ++ [other]
 hexToBinaryString "" = ""
 hexToBinaryString (hex : rest) = convertHex hex ++ hexToBinaryString rest
 
--- | Convert binary (list of zeros and ones) to decimal
-binaryToInt :: String -> Int
-binaryToInt = reverse .> binaryToInt'
-
-binaryToInt' [] = 0
-binaryToInt' (x : xs) = digitToInt x + 2 * binaryToInt' xs
-
 applyOperator opTypeId subValues = case opTypeId of
   0 -> sum subValues
   1 -> product subValues

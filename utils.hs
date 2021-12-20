@@ -1,6 +1,7 @@
 module Utils where
 
 import Control.Applicative (ZipList (ZipList, getZipList))
+import Data.Char (digitToInt)
 
 (.>) = flip (.)
 
@@ -47,3 +48,10 @@ takeUntil p (x : xs) = x : if p x then takeUntil p xs else []
 
 fromSymEither (Left x) = x
 fromSymEither (Right x) = x
+
+-- | Convert binary (list of zeros and ones) to decimal
+binaryToInt :: String -> Int
+binaryToInt = reverse .> binaryToIntRev
+
+binaryToIntRev [] = 0
+binaryToIntRev (x : xs) = digitToInt x + 2 * binaryToIntRev xs
